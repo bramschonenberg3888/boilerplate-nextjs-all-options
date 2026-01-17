@@ -1,65 +1,76 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <div className="min-h-screen bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-black">
+      <main className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
+              Next.js Full-Stack Boilerplate
+            </h1>
+            <p className="text-xl text-zinc-600 dark:text-zinc-400">
+              Production-ready template with Auth, tRPC, Prisma, and more
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <FeatureCard
+              title="🔐 Authentication"
+              description="NextAuth.js v5 with Credentials provider and Prisma adapter"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <FeatureCard
+              title="🎨 UI Components"
+              description="shadcn/ui with Tailwind CSS and dark mode support"
+            />
+            <FeatureCard
+              title="🗄️ Database"
+              description="Prisma v7 ORM with PostgreSQL adapter"
+            />
+            <FeatureCard
+              title="🔌 API Layer"
+              description="tRPC v11 with React Query for type-safe APIs"
+            />
+            <FeatureCard
+              title="🛡️ Type Safety"
+              description="TypeScript strict mode with Zod validation"
+            />
+            <FeatureCard
+              title="🧪 Testing"
+              description="Vitest for unit tests, Playwright for E2E"
+            />
+            <FeatureCard
+              title="✨ Code Quality"
+              description="ESLint, Prettier, and Husky pre-commit hooks"
+            />
+            <FeatureCard
+              title="🚀 Deployment"
+              description="Vercel-ready with optimized configuration"
+            />
+          </div>
+
+          <div className="bg-zinc-100 dark:bg-zinc-900 rounded-lg p-8">
+            <h2 className="text-2xl font-bold mb-4">Get Started</h2>
+            <div className="space-y-2 text-sm font-mono">
+              <p className="text-zinc-600 dark:text-zinc-400"># 1. Copy .env.example to .env.local and configure</p>
+              <p className="bg-zinc-200 dark:bg-zinc-800 p-2 rounded">cp .env.example .env.local</p>
+
+              <p className="text-zinc-600 dark:text-zinc-400 mt-4"># 2. Set up your database (optional - comment out if not ready)</p>
+              <p className="bg-zinc-200 dark:bg-zinc-800 p-2 rounded">bun db:push</p>
+
+              <p className="text-zinc-600 dark:text-zinc-400 mt-4"># 3. Start development server</p>
+              <p className="bg-zinc-200 dark:bg-zinc-800 p-2 rounded">bun dev</p>
+            </div>
+          </div>
         </div>
       </main>
+    </div>
+  );
+}
+
+function FeatureCard({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 hover:shadow-lg transition-shadow">
+      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+      <p className="text-zinc-600 dark:text-zinc-400 text-sm">{description}</p>
     </div>
   );
 }
